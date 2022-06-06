@@ -55,7 +55,7 @@ docker build -t prometheus 'https://github.com/shvchk/prometheus-script-docker.g
   ```sh
   wget -O "$APP_LAUNCHER_NAME" "$APP_URL" && \
   chmod +x "$APP_LAUNCHER_NAME" && \
-  "$APP_LAUNCHER_NAME"
+  ./"$APP_LAUNCHER_NAME"
   ```
 
   Если в соответствующей папке на хосте у вас уже есть скрипт Prometheus, абзац выше можно игнорировать, и просто убрать `bash` из команды запуска контейнера выше, чтобы Prometheus запустился автоматически.
