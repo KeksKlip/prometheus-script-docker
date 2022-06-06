@@ -47,6 +47,13 @@ docker build -t prometheus https://github.com/shvchk/prometheus-script-docker.gi
 
 - **Создать новый контейнер, разместив папку Prometheus в `/tmp/prometheus` на хосте:**
   ```sh
-  docker run -it -v /tmp/prometheus:/opt/prometheus --name prometheus-4 prometheus
+  docker run -it -v /tmp/prometheus:/opt/prometheus --name prometheus-4 prometheus bash
   ```
   Это бывает полезно, чтобы сделать папку Prometheus легко доступной на хосте (например, чтобы изменить какие-то файлы или забрать собранные файлы) или чтобы разместить папку Prometheus в ФС в RAM / ZRAM для ускорения сборки.
+
+  Заметьте, что в примере выше стартовая команда заменена со стандартной на шелл `bash`. Дело в том, что если в соответствующей папке на хосте нет скрипта Prometheus (`start.sh`), контейнер не сможет его запустить. Поэтому вместо скрипта запускаем шелл и вручную скачиваем и запускаем скрипт в контейнере:
+  ```sh
+  wget -O "$APP_LAUNCHER_NAME" "$APP_URL" && \
+  chmod +x "$APP_LAUNCHER_NAME" && \
+  "$APP_LAUNCHER_NAME"
+  ```
