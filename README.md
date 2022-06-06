@@ -6,7 +6,7 @@ Docker-контейнер для сборки прошивок роутеров 
 
 Собрать образ `prometheus` (имя произвольно):
 ```sh
-docker build -t prometheus 'https://github.com/shvchk/prometheus-script-docker.git#main'
+docker build -t prometheus 'https://github.com/KeksKlip/prometheus-script-docker.git#main'
 ```
 Впоследствии на базе него будут создаваться контейнеры. Сборка производится однократно, в дальнейшем повторять её не требуется, если вы не решите изменить Dockerfile.
 
