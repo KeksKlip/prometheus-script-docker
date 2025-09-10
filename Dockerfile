@@ -1,4 +1,4 @@
-FROM debian:10-slim
+FROM debian:12-slim
 
 ENV APP_PATH="/opt/prometheus" \
     APP_LAUNCHER_NAME="start.sh" \
@@ -8,7 +8,7 @@ ENV APP_PATH="/opt/prometheus" \
 
 RUN apt update && \
     apt upgrade -y && \
-    apt install -y cmake cpio kmod locales netcat sudo wget && \
+    apt install -y cmake cpio kmod locales netcat-openbsd sudo wget && \
     sed -Ei '/(en_US|ru_RU).UTF-8/s/^# //g' /etc/locale.gen && \
     locale-gen && \
     mkdir "${APP_PATH}" && \
@@ -18,3 +18,4 @@ RUN apt update && \
 WORKDIR "${APP_PATH}"
 
 CMD "${APP_PATH}/${APP_LAUNCHER_NAME}"
+
